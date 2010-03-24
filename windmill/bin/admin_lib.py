@@ -199,13 +199,15 @@ def teardown(shell_objects):
             controller.stop()
             del(controller)
         
-        if windmill.settings['START_FIREFOX'] and windmill.settings['MOZILLA_CREATE_NEW_PROFILE']:
-            shutil.rmtree(windmill.settings['MOZILLA_PROFILE'])
+        #if windmill.settings['START_FIREFOX'] and windmill.settings['MOZILLA_CREATE_NEW_PROFILE']:
+            #shutil.rmtree(windmill.settings['MOZILLA_PROFILE'])
         
-        for directory in windmill.teardown_directories:
-            if os.path.isdir(directory):
-                shutil.rmtree(directory)
-        
+        #for directory in windmill.teardown_directories:
+        #    if os.path.isdir(directory):
+        #        shutil.rmtree(directory)
+
+        print dir(shell_objects['httpd'].__module__)
+        shell_objects['httpd'].stop()
         # We had a ton of code here for killing the process
         # But I removed it all and things seem to work
         # Guess we can revert if it's broken :)
